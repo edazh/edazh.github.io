@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="自考 数据结构导论," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="笔记目录树结构、森林 树的基本概念 树（Tree）是 n （n &amp;gt;= 0）个结点的有限集合。 一棵树满足下列两个条件： (1) 当 n = 0 时，称为空树 (2) 当 n &amp;gt; 0 时，有且仅有一个称为根的结点，除根结点外，其余结分为 m(m &amp;gt;= 0)个互不相交的非空集合 T1 , T2 , … , Tm ，这些合中的每一个集合都是一棵树，称为根的子树。">
+<meta name="keywords" content="自考 数据结构导论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数据结构导论】第四章-树和二叉树">
+<meta property="og:url" content="https://blog.edazh.ml/2018/02/28/【数据结构导论】第四章-树和二叉树/index.html">
+<meta property="og:site_name" content="edazh&#39; blog">
+<meta property="og:description" content="笔记目录树结构、森林 树的基本概念 树（Tree）是 n （n &amp;gt;= 0）个结点的有限集合。 一棵树满足下列两个条件： (1) 当 n = 0 时，称为空树 (2) 当 n &amp;gt; 0 时，有且仅有一个称为根的结点，除根结点外，其余结分为 m(m &amp;gt;= 0)个互不相交的非空集合 T1 , T2 , … , Tm ，这些合中的每一个集合都是一棵树，称为根的子树。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-28T06:53:29.419Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【数据结构导论】第四章-树和二叉树">
+<meta name="twitter:description" content="笔记目录树结构、森林 树的基本概念 树（Tree）是 n （n &amp;gt;= 0）个结点的有限集合。 一棵树满足下列两个条件： (1) 当 n = 0 时，称为空树 (2) 当 n &amp;gt; 0 时，有且仅有一个称为根的结点，除根结点外，其余结分为 m(m &amp;gt;= 0)个互不相交的非空集合 T1 , T2 , … , Tm ，这些合中的每一个集合都是一棵树，称为根的子树。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.edazh.ml/2018/02/28/【数据结构导论】第四章-树和二叉树/"/>
+
+
+
+
+
+  <title>【数据结构导论】第四章-树和二叉树 | edazh' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">edazh' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">高山仰止，景行行止。虽不能至，然心向往之。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+<div id="music163player">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=37856491&auto=1&height=66"></iframe>
+</div>
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.edazh.ml/2018/02/28/【数据结构导论】第四章-树和二叉树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="edazh">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="edazh' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【数据结构导论】第四章-树和二叉树</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T14:19:14+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构导论/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构导论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="笔记目录"><a href="#笔记目录" class="headerlink" title="笔记目录"></a><a href="https://edazh.github.io/2018/02/14/%E3%80%9002142%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AF%BC%E8%AE%BA-%E7%9B%AE%E5%BD%95/" target="_blank" rel="noopener">笔记目录</a></h2><h2 id="树结构、森林"><a href="#树结构、森林" class="headerlink" title="树结构、森林"></a>树结构、森林</h2><blockquote>
+<h3 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h3></blockquote>
+<p>树（Tree）是 <code>n （n &gt;= 0）</code>个结点的有限集合。</p>
+<p>一棵树满足下列两个条件：</p>
+<p>(1) 当 <code>n = 0</code> 时，称为空树</p>
+<p>(2) 当 <code>n &gt; 0</code> 时，有且仅有一个称为根的结点，除根结点外，其余结分为 m(m &gt;= 0)个互不相交的非空集合 T1 , T2 , … , Tm ，这些合中的每一个集合都是一棵树，称为根的子树。</p>
+<a id="more"></a>
+<blockquote>
+<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3></blockquote>
+<p><strong>结点的度</strong>：树上任意结点所拥有的子树的数目称为该结点的度。</p>
+<p><strong>叶子</strong>：度为0的结点称为叶子或终端结点。</p>
+<p><strong>树的度</strong>：一棵树中所有结点的度的最大值称为该树的度。</p>
+<p><strong>结点的层次</strong>：从根开始算起，根的层次为1，其余结点的层次为其双亲的结层次加1。</p>
+<p><strong>树的高度</strong>：一棵树中所有结点层次数的最大值称为该树的高度或深度。</p>
+<p><strong>有序树</strong>：若树中各结点的子树从左到右是有次序的，不能转换，称为有序树。</p>
+<p><strong>无序树</strong>：若树中各结点的子树是无次序的，可以转换，则成为无序树。</p>
+<blockquote>
+<h3 id="森林基本概念"><a href="#森林基本概念" class="headerlink" title="森林基本概念"></a>森林基本概念</h3></blockquote>
+<p>森林(Forest) m(m &gt;= 0)棵互不相交的树的集合。树的每个结点的子树是林。删除一个非空树的根结点，它的子树便构成森林。</p>
+<blockquote>
+<h3 id="树的基本运算"><a href="#树的基本运算" class="headerlink" title="树的基本运算"></a>树的基本运算</h3></blockquote>
+<p>(1) 求根 <code>Root(T)</code>：求树 T 的根节点;</p>
+<p>(2) 求双亲 <code>Parent(T,X)</code></p>
+<p>(3) 求孩子 <code>Child(T,X,i)</code></p>
+<p>(4) 建树 <code>Create(X,T1,…,Tk); k &gt; 1;</code></p>
+<p>(5) 剪枝 <code>Delete(T,X,i)</code></p>
+<p>(6) 遍历 <code>TraverseTree(T)</code></p>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><blockquote>
+<h3 id="二叉树的概念"><a href="#二叉树的概念" class="headerlink" title="二叉树的概念"></a>二叉树的概念</h3></blockquote>
+<p>二叉树(<code>Binart Tree</code>)是<code>n ( n &gt;= 0)</code>个元素的有限集合。</p>
+<blockquote>
+<h3 id="左子树、右子树"><a href="#左子树、右子树" class="headerlink" title="左子树、右子树"></a>左子树、右子树</h3></blockquote>
+<p>二叉树的任一结点都有两棵子树（它们中的任何一个都可以是空子树），并这两棵子树之间有次序关系，即如果互换了位置则成为两棵不同的二叉树。叉树上任一结点左右子树的根分别称为该结点的左孩子和右孩子。</p>
+<blockquote>
+<h3 id="二叉树的基本运算"><a href="#二叉树的基本运算" class="headerlink" title="二叉树的基本运算"></a>二叉树的基本运算</h3></blockquote>
+<ol>
+<li><p>初始化    <code>Initiate(BT)</code>：建立一棵空二叉树</p>
+</li>
+<li><p>求双亲    <code>Parent(BT,X)</code>：求出二叉树上结点X的双亲结点</p>
+</li>
+<li><p>求左孩子    <code>Lchild(BT,X)</code>，求右孩子    Rchild(BT,X)：分别求二叉树BT上结点X的左、右孩子</p>
+</li>
+<li><p>建二叉树    <code>Create(BT)</code>：建立一棵二叉树BT</p>
+</li>
+<li><p>先序遍历    <code>PreOrder(BT)</code>：按先序对二叉树进行遍历</p>
+</li>
+<li><p>中序遍历    <code>InOrder(BT)</code>：按中序对二叉树进行遍历</p>
+</li>
+<li><p>后序遍历    <code>PostOrder(BT)</code>：按后序对二叉树进行遍历</p>
+</li>
+<li><p>层次遍历    <code>LevelOrder(BT)</code>：按层从上往下，同一层中结点按从往右的顺序，对二叉树进行遍历</p>
+</li>
+</ol>
+<blockquote>
+<h3 id="二叉树的性质"><a href="#二叉树的性质" class="headerlink" title="二叉树的性质"></a>二叉树的性质</h3></blockquote>
+<p>性质 1：二叉树的第 <code>i (I &gt;= 1)</code>层上至多有 <code>2i - 1</code> 个结点</p>
+<p>性质 2：深度为 <code>k (k &gt;= 1)</code>的二叉树至多有 <code>2k - 1</code> 个结点</p>
+<p>性质 3：对任何一棵二叉树，若度数为 <code>0</code> 的结点（叶节点）个数为 <code>n0</code> ，数为 <code>2</code> 的结点个数为 <code>n2</code> ，则 <code>n0 = n2 + 1</code></p>
+<p>性质 4：含有<code>n</code>个结点的完全二叉树的深度为 <code>(log2n) + 1</code></p>
+<p>性质 5：如果将一棵有<code>n</code>个结点的完全二叉树按层编号，则对任一编号为<code>i</code>结点<code>A</code>有：<br>(1) 若 <code>i = 1</code>，则结点<code>A</code>是根：若<code>i &gt; 1</code>，则<code>A</code>的双亲 <code>Parent(A)</code> 的编号为 <code>[i/2]</code> ;</p>
+<p>(2) 若 <code>2 * i &gt; n</code>，则结点<code>A</code>既无左孩子，也无右孩子；否则<code>A</code>的左孩子<code>Lchild(A)</code>的编号为<code>2 * i</code> ;</p>
+<p>(3) 若 <code>2 * i + 1 &gt; n</code>，则结点<code>A</code>无右孩子；否则<code>A</code>的右孩子 <code>Rchild(A)</code> 的编号为 <code>2 * i + 1</code> ;</p>
+<blockquote>
+<h3 id="二叉树顺序存储"><a href="#二叉树顺序存储" class="headerlink" title="二叉树顺序存储"></a>二叉树顺序存储</h3></blockquote>
+<p>二叉树的顺序存储结构可以使用一维数组实现，根据二叉树的性质5，采用编号作为数组的下标，将结点存入数组中。</p>
+<p>对于非完全二叉树，需要增设若干个虚拟结点将其转化为完全二叉树。各个拟结点在数组中用特殊符号”^”表示。</p>
+<blockquote>
+<h3 id="二叉树链式存储及类C语言描述"><a href="#二叉树链式存储及类C语言描述" class="headerlink" title="二叉树链式存储及类C语言描述"></a>二叉树链式存储及类C语言描述</h3></blockquote>
+<p>二叉树最常用的链式存储结构有二叉链表和三叉链表。</p>
+<blockquote>
+<h4 id="二叉链表类C语言描述："><a href="#二叉链表类C语言描述：" class="headerlink" title="二叉链表类C语言描述："></a>二叉链表类C语言描述：</h4></blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DataType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">binode</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span> <span class="comment">//指向左右孩子的指针</span></span><br><span class="line">&#125; * BinTree;</span><br><span class="line">BinTree root;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="三叉链表类C语言描述："><a href="#三叉链表类C语言描述：" class="headerlink" title="三叉链表类C语言描述："></a>三叉链表类C语言描述：</h4></blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ttnode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DataType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ttnode</span> *<span class="title">lchild</span>, *<span class="title">parent</span>, *<span class="title">rchild</span>;</span></span><br><span class="line">&#125; * TBinTree;</span><br><span class="line">TBinTree root;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="二叉树的遍历算法"><a href="#二叉树的遍历算法" class="headerlink" title="二叉树的遍历算法"></a>二叉树的遍历算法</h3></blockquote>
+<ul>
+<li>先序遍历</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preorder</span><span class="params">(BinTree bt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (bt != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        visit(bt);            <span class="comment">//访问根节点</span></span><br><span class="line">        preorder(bt-&gt;lchild); <span class="comment">//先序遍历左子树</span></span><br><span class="line">        preorder(bt-&gt;rchild); <span class="comment">//先序遍历右子树</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>中序遍历</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inorder</span><span class="params">(BinTree bt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (bt != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        inorder(bt-&gt;lchild); <span class="comment">//中序遍历左子树</span></span><br><span class="line">        visit(bt);           <span class="comment">//访问根结点</span></span><br><span class="line">        inorder(bt-&gt;rchild); <span class="comment">//中序遍历右子树</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>后序遍历</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postorder</span><span class="params">(BinTree bt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (bt != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        postorder(bt-&gt;lchild); <span class="comment">//后序遍历左子树</span></span><br><span class="line">        postorder(by-&gt;rchild); <span class="comment">//后序遍历右子树</span></span><br><span class="line">        visit(bt);             <span class="comment">//访问根结点</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>树结点数计算</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">(BinTree bt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (bt == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;                                     <span class="comment">//空树返回0</span></span><br><span class="line">    <span class="keyword">return</span> count(bt-&gt;lchild) + count(bt-&gt;rchild) + <span class="number">1</span>; <span class="comment">//左子+右子树+根结点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>树深度计算</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">height</span><span class="params">(BinTree bt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> lh, rh; <span class="comment">//初始左右子树高度为0</span></span><br><span class="line">    <span class="keyword">if</span> (bt == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    lh = height(bt-&gt;lchild); <span class="comment">//左子树高度</span></span><br><span class="line">    rh = height(bt-&gt;rchild); <span class="comment">//右子树高度</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + (lh &gt; rh ? lh : rh);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="树和森林"><a href="#树和森林" class="headerlink" title="树和森林"></a>树和森林</h2><blockquote>
+<h3 id="树的先序、后序和层次遍历方法"><a href="#树的先序、后序和层次遍历方法" class="headerlink" title="树的先序、后序和层次遍历方法"></a>树的先序、后序和层次遍历方法</h3></blockquote>
+<ul>
+<li><p>先序遍历，若树非空，则：</p>
+<ol>
+<li>访问根结点</li>
+<li>依次先序遍历根的各棵子树</li>
+</ol>
+</li>
+<li><p>后序遍历，若树非空，则：</p>
+<ol>
+<li>依次后序遍历根的各棵子树</li>
+<li>访问根结点</li>
+</ol>
+</li>
+<li><p>层次遍历</p>
+<ol>
+<li>若树非空，访问根结点</li>
+<li>若第i层结点已经访问，第 i + 1 层结点尚未访问，则从左到右依次访问第 i + 1 层结点</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<h3 id="森林的先序遍历方法"><a href="#森林的先序遍历方法" class="headerlink" title="森林的先序遍历方法"></a>森林的先序遍历方法</h3></blockquote>
+<p>若森林非空，则：</p>
+<p>(1) 访问森林中第一棵树的根结点</p>
+<p>(2) 先序遍历第一棵树的根结点的子树组成的森林</p>
+<p>(3) 先序遍历出去第一棵树之外其余的树组成的森林</p>
+<blockquote>
+<h3 id="森林的中序遍历方法"><a href="#森林的中序遍历方法" class="headerlink" title="森林的中序遍历方法"></a>森林的中序遍历方法</h3></blockquote>
+<p>若森林非空，则：</p>
+<p>(1) 中序遍历森林中第一棵树的根结点的子树组成的森林</p>
+<p>(2) 访问第一棵树的根结点</p>
+<p>(3) 中序遍历出去第一棵树之外其余的树组成的森林</p>
+<blockquote>
+<h3 id="树、森林与二叉树的关系"><a href="#树、森林与二叉树的关系" class="headerlink" title="树、森林与二叉树的关系"></a>树、森林与二叉树的关系</h3></blockquote>
+<ul>
+<li>树与二叉树可以互相转换</li>
+<li>森林和二叉树可以互相转换</li>
+</ul>
+<blockquote>
+<h3 id="树转换成二叉树的方法"><a href="#树转换成二叉树的方法" class="headerlink" title="树转换成二叉树的方法"></a>树转换成二叉树的方法</h3></blockquote>
+<p>(1) 将所有兄弟结点连接起来</p>
+<p>(2) 保留第一个兄弟结点与父结点的连接，断开其他兄弟结点与父结点的连接，然后以根结点为轴心顺时针旋转45°角</p>
+<blockquote>
+<h3 id="森林转换成二叉树的方法"><a href="#森林转换成二叉树的方法" class="headerlink" title="森林转换成二叉树的方法"></a>森林转换成二叉树的方法</h3></blockquote>
+<p>(1) 将每棵树转换成相应的二叉树</p>
+<p>(2) 将（1）得到的各棵二叉树的根结点看作是兄弟连接起来</p>
+<blockquote>
+<h3 id="二叉树转换成对应森林的方法"><a href="#二叉树转换成对应森林的方法" class="headerlink" title="二叉树转换成对应森林的方法"></a>二叉树转换成对应森林的方法</h3></blockquote>
+<p>(1) 断开根结点与右孩子的连接线，得到二叉树T1和T2</p>
+<p>(2) 连接T1的根结点与左子树的右子树</p>
+<p>(3) 重复(1)(2)将T2转换成对应的森林</p>
+<h2 id="判定树和哈夫曼树"><a href="#判定树和哈夫曼树" class="headerlink" title="判定树和哈夫曼树"></a>判定树和哈夫曼树</h2><blockquote>
+<h3 id="判定树的概念"><a href="#判定树的概念" class="headerlink" title="判定树的概念"></a>判定树的概念</h3></blockquote>
+<p>分类运算的作用是将输入数据按预定的标准划分成不同的种类，用于描述分类过程的二叉树称为判定树。</p>
+<blockquote>
+<h3 id="哈夫曼树的概念"><a href="#哈夫曼树的概念" class="headerlink" title="哈夫曼树的概念"></a>哈夫曼树的概念</h3></blockquote>
+<p>给定一组值 <code>P1,… ,Pk</code>,如何构造出有<code>k</code>个叶子且以这些值为权的判定树，使得其平均比较次数为最小。满足上述条件的判定树称为哈夫曼（<code>Huffman</code>）树。</p>
+<blockquote>
+<h3 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h3></blockquote>
+<p>对哈夫曼树每个结点的左分支和右分支分别置“<code>0</code>”或“<code>1</code>”，就可以得到哈弗曼编码。</p>
+<blockquote>
+<h3 id="哈夫曼树构造过程和哈夫曼算法"><a href="#哈夫曼树构造过程和哈夫曼算法" class="headerlink" title="哈夫曼树构造过程和哈夫曼算法"></a>哈夫曼树构造过程和哈夫曼算法</h3></blockquote>
+<p>每次合并具有最小权值和次小权值的两个根结点，直到只剩一个根结点为止。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自考-数据结构导论/" rel="tag"># 自考 数据结构导论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/18/【数据结构导论】第三章-栈、队列和数组/" rel="next" title="【数据结构导论】第三章-栈、队列和数组">
+                <i class="fa fa-chevron-left"></i> 【数据结构导论】第三章-栈、队列和数组
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">edazh</p>
+              <p class="site-description motion-element" itemprop="description">create by edazh</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记目录"><span class="nav-number">1.</span> <span class="nav-text">笔记目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树结构、森林"><span class="nav-number">2.</span> <span class="nav-text">树结构、森林</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#树的基本概念"><span class="nav-number">2.1.</span> <span class="nav-text">树的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#术语"><span class="nav-number">2.2.</span> <span class="nav-text">术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#森林基本概念"><span class="nav-number">2.3.</span> <span class="nav-text">森林基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树的基本运算"><span class="nav-number">2.4.</span> <span class="nav-text">树的基本运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树"><span class="nav-number">3.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的概念"><span class="nav-number">3.1.</span> <span class="nav-text">二叉树的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#左子树、右子树"><span class="nav-number">3.2.</span> <span class="nav-text">左子树、右子树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的基本运算"><span class="nav-number">3.3.</span> <span class="nav-text">二叉树的基本运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的性质"><span class="nav-number">3.4.</span> <span class="nav-text">二叉树的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树顺序存储"><span class="nav-number">3.5.</span> <span class="nav-text">二叉树顺序存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树链式存储及类C语言描述"><span class="nav-number">3.6.</span> <span class="nav-text">二叉树链式存储及类C语言描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二叉链表类C语言描述："><span class="nav-number">3.6.1.</span> <span class="nav-text">二叉链表类C语言描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三叉链表类C语言描述："><span class="nav-number">3.6.2.</span> <span class="nav-text">三叉链表类C语言描述：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的遍历算法"><span class="nav-number">3.7.</span> <span class="nav-text">二叉树的遍历算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树和森林"><span class="nav-number">4.</span> <span class="nav-text">树和森林</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#树的先序、后序和层次遍历方法"><span class="nav-number">4.1.</span> <span class="nav-text">树的先序、后序和层次遍历方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#森林的先序遍历方法"><span class="nav-number">4.2.</span> <span class="nav-text">森林的先序遍历方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#森林的中序遍历方法"><span class="nav-number">4.3.</span> <span class="nav-text">森林的中序遍历方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树、森林与二叉树的关系"><span class="nav-number">4.4.</span> <span class="nav-text">树、森林与二叉树的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树转换成二叉树的方法"><span class="nav-number">4.5.</span> <span class="nav-text">树转换成二叉树的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#森林转换成二叉树的方法"><span class="nav-number">4.6.</span> <span class="nav-text">森林转换成二叉树的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树转换成对应森林的方法"><span class="nav-number">4.7.</span> <span class="nav-text">二叉树转换成对应森林的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判定树和哈夫曼树"><span class="nav-number">5.</span> <span class="nav-text">判定树和哈夫曼树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#判定树的概念"><span class="nav-number">5.1.</span> <span class="nav-text">判定树的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈夫曼树的概念"><span class="nav-number">5.2.</span> <span class="nav-text">哈夫曼树的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈夫曼编码"><span class="nav-number">5.3.</span> <span class="nav-text">哈夫曼编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈夫曼树构造过程和哈夫曼算法"><span class="nav-number">5.4.</span> <span class="nav-text">哈夫曼树构造过程和哈夫曼算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">edazh</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

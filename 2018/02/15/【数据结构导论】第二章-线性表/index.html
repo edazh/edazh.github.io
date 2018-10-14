@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="自考 数据结构导论," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="线性表笔记目录线性表的概念线性表（Linear List）是由一个或多个数据元素组成的有限序列。  线性表的基本特征  线性表中的结点具有一对一的关系，且个数有限。 如果节点数不为零，则除起始结点没有直接前驱外，其他每个结点，有且仅有一个直接前驱；除终端结点没有直接后继外，其他每个节点有且仅有一个直接后继。 同一个线性表中的所有结点代表的数据元素具有相同的特性。">
+<meta name="keywords" content="自考 数据结构导论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数据结构导论】第二章-线性表">
+<meta property="og:url" content="https://blog.edazh.ml/2018/02/15/【数据结构导论】第二章-线性表/index.html">
+<meta property="og:site_name" content="edazh&#39; blog">
+<meta property="og:description" content="线性表笔记目录线性表的概念线性表（Linear List）是由一个或多个数据元素组成的有限序列。  线性表的基本特征  线性表中的结点具有一对一的关系，且个数有限。 如果节点数不为零，则除起始结点没有直接前驱外，其他每个结点，有且仅有一个直接前驱；除终端结点没有直接后继外，其他每个节点有且仅有一个直接后继。 同一个线性表中的所有结点代表的数据元素具有相同的特性。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ys-k.ys168.com/578705561/igjfMjt3M372H78HMLJ/%E9%93%BE%E8%A1%A8%E7%BB%93%E7%82%B9.png">
+<meta property="og:image" content="http://ys-j.ys168.com/578705517/kghdOik7N345I6FGNPH/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://ys-j.ys168.com/578705516/g3O553J4JFJQ8kghdOi/%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84.png">
+<meta property="og:updated_time" content="2018-02-17T09:05:17.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【数据结构导论】第二章-线性表">
+<meta name="twitter:description" content="线性表笔记目录线性表的概念线性表（Linear List）是由一个或多个数据元素组成的有限序列。  线性表的基本特征  线性表中的结点具有一对一的关系，且个数有限。 如果节点数不为零，则除起始结点没有直接前驱外，其他每个结点，有且仅有一个直接前驱；除终端结点没有直接后继外，其他每个节点有且仅有一个直接后继。 同一个线性表中的所有结点代表的数据元素具有相同的特性。">
+<meta name="twitter:image" content="http://ys-k.ys168.com/578705561/igjfMjt3M372H78HMLJ/%E9%93%BE%E8%A1%A8%E7%BB%93%E7%82%B9.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.edazh.ml/2018/02/15/【数据结构导论】第二章-线性表/"/>
+
+
+
+
+
+  <title>【数据结构导论】第二章-线性表 | edazh' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">edazh' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">高山仰止，景行行止。虽不能至，然心向往之。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+<div id="music163player">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=37856491&auto=1&height=66"></iframe>
+</div>
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.edazh.ml/2018/02/15/【数据结构导论】第二章-线性表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="edazh">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="edazh' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【数据结构导论】第二章-线性表</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-15T14:54:54+08:00">
+                2018-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构导论/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构导论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><h2 id="笔记目录"><a href="#笔记目录" class="headerlink" title="笔记目录"></a><a href="https://edazh.github.io/2018/02/14/%E3%80%9002142%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AF%BC%E8%AE%BA-%E7%9B%AE%E5%BD%95/" target="_blank" rel="noopener">笔记目录</a></h2><h2 id="线性表的概念"><a href="#线性表的概念" class="headerlink" title="线性表的概念"></a>线性表的概念</h2><p>线性表（Linear List）是由一个或多个数据元素组成的有限序列。</p>
+<blockquote>
+<h3 id="线性表的基本特征"><a href="#线性表的基本特征" class="headerlink" title="线性表的基本特征"></a>线性表的基本特征</h3></blockquote>
+<ul>
+<li>线性表中的结点具有一对一的关系，且个数有限。</li>
+<li>如果节点数不为零，则除起始结点没有直接前驱外，其他每个结点，有且仅有一个直接前驱；除终端结点没有直接后继外，其他每个节点有且仅有一个直接后继。</li>
+<li>同一个线性表中的所有结点代表的数据元素具有相同的特性。</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<h3 id="线性表表长和基本操作"><a href="#线性表表长和基本操作" class="headerlink" title="线性表表长和基本操作"></a>线性表表长和基本操作</h3></blockquote>
+<ul>
+<li>表长：线性表中的结点个数为表长。</li>
+<li>基本操作包括：<ul>
+<li>初始化</li>
+<li>求表长</li>
+<li>读表元素</li>
+<li>定位</li>
+<li>插入</li>
+<li>删除</li>
+</ul>
+</li>
+</ul>
+<h2 id="线性表的顺序存储结构-顺序表"><a href="#线性表的顺序存储结构-顺序表" class="headerlink" title="线性表的顺序存储结构-顺序表"></a>线性表的顺序存储结构-顺序表</h2><blockquote>
+<h3 id="线性表顺序存储方法："><a href="#线性表顺序存储方法：" class="headerlink" title="线性表顺序存储方法："></a>线性表顺序存储方法：</h3></blockquote>
+<p>将表中的结点依次存放在计算机内存中一段连续的存储单元中。</p>
+<ul>
+<li><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4></li>
+</ul>
+<p>数据元素在线性表中的邻接关系决定它们在存储空间中的存储位置。</p>
+<ul>
+<li><h4 id="类C语言描述"><a href="#类C语言描述" class="headerlink" title="类C语言描述"></a>类C语言描述</h4></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假定线性表的表元素类型为DataType</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Maxsize = <span class="number">7</span>; <span class="comment">//预先定义数组大小</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> num;      <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">8</span>]; <span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">char</span> sex[<span class="number">2</span>];  <span class="comment">//性别</span></span><br><span class="line">    <span class="keyword">int</span> age;      <span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">int</span> score;    <span class="comment">//入学成绩</span></span><br><span class="line">&#125; DataType;       <span class="comment">//定义结点的类型</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="顺序表插入、删除和定位运算的实现算法。"><a href="#顺序表插入、删除和定位运算的实现算法。" class="headerlink" title="顺序表插入、删除和定位运算的实现算法。"></a>顺序表插入、删除和定位运算的实现算法。</h4></li>
+</ul>
+<blockquote>
+<h5 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h5></blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSeqList</span><span class="params">(SeqList L, DataType x, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">//将元素x插入到顺序表L的第i个元素之前</span></span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">if</span> (L.length == Maxsize)</span><br><span class="line">        <span class="built_in">exit</span>(<span class="string">"表已满"</span>);</span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">1</span> || i &gt; L.length + <span class="number">1</span>) <span class="comment">//检查插入位置是否合法</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="string">"位置错"</span>);</span><br><span class="line">    <span class="keyword">for</span> (j = L.length; j &gt; i; j--) <span class="comment">//初始i=L.length</span></span><br><span class="line">        L.data[j] = L.data[j - <span class="number">1</span>]; <span class="comment">//依次后移</span></span><br><span class="line">    L.data[i - <span class="number">1</span>] = x;             <span class="comment">//元素x放到下标为i-1的位置</span></span><br><span class="line">    L.length++;                    <span class="comment">//表长度加1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h5 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h5></blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DeleteSeqList</span><span class="params">(SeqList L, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">//删除线性表 L 中的第 i 个数据结点</span></span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">1</span> || i &gt; L.length) <span class="comment">//检查位置合法性</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="string">"非法位置"</span>);</span><br><span class="line">    <span class="keyword">for</span> (j = i; j &lt; L.length; j++) <span class="comment">//第 i 个元素的下标为 i-1</span></span><br><span class="line">        L.data[j - <span class="number">1</span>] = L.data[j]; <span class="comment">//依次左移</span></span><br><span class="line">    L.length--;                    <span class="comment">//表长度减一</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h5 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h5></blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LocateSeqList</span><span class="params">(SeqList L, DataType x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ((i &lt; L.length) &amp;&amp; L.data[i] != x) <span class="comment">//在顺序表中查找值为x的结点</span></span><br><span class="line">        i++;</span><br><span class="line">    <span class="keyword">if</span> (i &lt; L.length) <span class="comment">//若找到值为x的元素，返回元素的序号</span></span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="comment">//若未找到值为x的元素，返回0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="线性表的链式存储结构–单链表"><a href="#线性表的链式存储结构–单链表" class="headerlink" title="线性表的链式存储结构–单链表"></a>线性表的链式存储结构–单链表</h2><blockquote>
+<h3 id="结点的结构"><a href="#结点的结构" class="headerlink" title="结点的结构"></a>结点的结构</h3></blockquote>
+<p>一个数据元素和一个指针组成单链表的一个结点</p>
+<p><img src="http://ys-k.ys168.com/578705561/igjfMjt3M372H78HMLJ/%E9%93%BE%E8%A1%A8%E7%BB%93%E7%82%B9.png" alt="单链表结点" title="单链表结点"></p>
+<blockquote>
+<h3 id="单链表的类C语言描述"><a href="#单链表的类C语言描述" class="headerlink" title="单链表的类C语言描述"></a>单链表的类C语言描述</h3></blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DataType data;     <span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span> <span class="comment">//指针域</span></span><br><span class="line">&#125; Node, *LinkList;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>头指针</p>
+<p>指向单链表第一个结点的指针</p>
+</li>
+<li><p>头结点</p>
+<p>在单链表的第一个结点之前增设一个类型相同的结点，称为头节点。</p>
+</li>
+<li><p>首结点</p>
+<p>链表中的第一个元素结点称为首结点。</p>
+</li>
+<li><p>尾结点</p>
+<p>链表中的最后一个元素结点称为首结点。</p>
+</li>
+<li><p>空链表</p>
+<p>如果头指针变量head等于NULL，则表示该链表无任何结点，为空链表。<br>一个空单链表仅有一个头节点，它的指针与为NULL</p>
+</li>
+</ul>
+<blockquote>
+<h3 id="单链表插入、删除和定位运算的关键步骤"><a href="#单链表插入、删除和定位运算的关键步骤" class="headerlink" title="单链表插入、删除和定位运算的关键步骤"></a>单链表插入、删除和定位运算的关键步骤</h3></blockquote>
+<ul>
+<li>建立空表</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LinkList <span class="title">InitiateLinkList</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">//建立一个空的链表</span></span><br><span class="line">    LinkList head;               <span class="comment">//头指针</span></span><br><span class="line">    head = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node)); <span class="comment">//动态建立一结点，它是头节点</span></span><br><span class="line">    head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>求表长</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LengthLinkList</span><span class="params">(LinkList head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//求单链表表head的长度</span></span><br><span class="line">    Node *p = head;         <span class="comment">//工作指针p初始指向头结点</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;          <span class="comment">//计数器</span></span><br><span class="line">    <span class="keyword">while</span> (p-&gt;next != <span class="literal">NULL</span>) <span class="comment">//判断是否为尾结点</span></span><br><span class="line">    &#123;</span><br><span class="line">        p = p-&gt;next; <span class="comment">//指针移动到下一结点</span></span><br><span class="line">        count++;    <span class="comment">//计数器+1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count; <span class="comment">//返回表长</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>读表元素</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node *<span class="title">GetLinkList</span><span class="params">(LinkList head, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//在单链表查找第i个元素结点，找到返回该节点指针，否则返回NULL</span></span><br><span class="line">    Node *p;        <span class="comment">//工作指针</span></span><br><span class="line">    p = head-&gt;next; <span class="comment">//初始指向首结点</span></span><br><span class="line">    <span class="keyword">int</span> c = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> ((c &lt; i) &amp;&amp; (p != <span class="literal">NULL</span>))</span><br><span class="line">    &#123; <span class="comment">//当未到i结点和尾结点是继续后移</span></span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        c++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (i == c) <span class="comment">//找到第i个结点</span></span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>; <span class="comment">//i值不合法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定位</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LocateLinkList</span><span class="params">(LinkList head, DataType x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//求表中第一个值为x的结点的序号，若找不到，返回0</span></span><br><span class="line">    Node *p = head;</span><br><span class="line">    p = p-&gt;next;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; p-&gt;data != x)</span><br><span class="line">    &#123;</span><br><span class="line">        i++;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (p != <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>插入</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertLinkList</span><span class="params">(LinkList head, DataType x, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">//在表head的第i个元素之前插入一个值为x的新结点</span></span><br><span class="line">    Node *p, *q;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">1</span>)</span><br><span class="line">        q = head;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        q = GetLinkList(head, i - <span class="number">1</span>); <span class="comment">//找第i-1个元素结点</span></span><br><span class="line">    <span class="keyword">if</span> (q == <span class="literal">NULL</span>)                    <span class="comment">//第i-1个结点不存在</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="string">"找不到插入的位置"</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        p = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node)); <span class="comment">//生成新的结点</span></span><br><span class="line">        p-&gt;data = x;</span><br><span class="line">        p-&gt;next = q-&gt;next;  <span class="comment">//新结点链域指向*q的后继结点</span></span><br><span class="line">        q-&gt;next = p;        <span class="comment">//修改*q的链域</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DeleteLinkList</span><span class="params">(LinkList head, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//删除表head中地i的结点</span></span><br><span class="line">    Node *q, *p;</span><br><span class="line">    <span class="keyword">if</span> (i = -= <span class="number">1</span>)</span><br><span class="line">        q = head;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        q = GetLinkList(head, i - <span class="number">1</span>); <span class="comment">//找到待删除的结点的直接前驱</span></span><br><span class="line">    <span class="keyword">if</span> (q != <span class="literal">NULL</span> &amp;&amp; q-&gt;next != <span class="literal">NULL</span>) <span class="comment">//若直接前驱存在且待删除结点也存在</span></span><br><span class="line">    &#123;</span><br><span class="line">        p = q-&gt;next;        <span class="comment">//p指向待删除结点</span></span><br><span class="line">        q-&gt;next = p-&gt;next;  <span class="comment">//待删除结点的直接前驱指向待删除结点的直接后继</span></span><br><span class="line">        <span class="built_in">free</span>(p);            <span class="comment">//释放已经移除链表的结点p的空间</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="string">"找不到要删除的结点"</span>); <span class="comment">//结点不存在</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="循环链表和双向循环链表"><a href="#循环链表和双向循环链表" class="headerlink" title="循环链表和双向循环链表"></a>循环链表和双向循环链表</h2><blockquote>
+<h3 id="循环链表的结点结构"><a href="#循环链表的结点结构" class="headerlink" title="循环链表的结点结构"></a>循环链表的结点结构</h3></blockquote>
+<p>链表中最后一个链表的指针域指向头结点。</p>
+<p><img src="http://ys-j.ys168.com/578705517/kghdOik7N345I6FGNPH/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84.png" alt="循环链表结构"></p>
+<blockquote>
+<h3 id="双向循环链表的结点结构"><a href="#双向循环链表的结点结构" class="headerlink" title="双向循环链表的结点结构"></a>双向循环链表的结点结构</h3></blockquote>
+<p>头节点的prior指向最后一个结点，最后一个结点的nex点</p>
+<p><img src="http://ys-j.ys168.com/578705516/g3O553J4JFJQ8kghdOi/%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84.png" alt="双向循环链表"><br><strong>【本章完】</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自考-数据结构导论/" rel="tag"># 自考 数据结构导论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/14/【数据结构导论】第一章-概论/" rel="next" title="【数据结构导论】第一章-概论">
+                <i class="fa fa-chevron-left"></i> 【数据结构导论】第一章-概论
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/18/【数据结构导论】第三章-栈、队列和数组/" rel="prev" title="【数据结构导论】第三章-栈、队列和数组">
+                【数据结构导论】第三章-栈、队列和数组 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">edazh</p>
+              <p class="site-description motion-element" itemprop="description">create by edazh</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性表"><span class="nav-number">1.</span> <span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记目录"><span class="nav-number">1.1.</span> <span class="nav-text">笔记目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表的概念"><span class="nav-number">1.2.</span> <span class="nav-text">线性表的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性表的基本特征"><span class="nav-number">1.2.1.</span> <span class="nav-text">线性表的基本特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性表表长和基本操作"><span class="nav-number">1.2.2.</span> <span class="nav-text">线性表表长和基本操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表的顺序存储结构-顺序表"><span class="nav-number">1.3.</span> <span class="nav-text">线性表的顺序存储结构-顺序表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性表顺序存储方法："><span class="nav-number">1.3.1.</span> <span class="nav-text">线性表顺序存储方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类C语言描述"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">类C语言描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序表插入、删除和定位运算的实现算法。"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">顺序表插入、删除和定位运算的实现算法。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#插入"><span class="nav-number">1.3.1.3.1.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除"><span class="nav-number">1.3.1.3.2.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定位"><span class="nav-number">1.3.1.3.3.</span> <span class="nav-text">定位</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表的链式存储结构–单链表"><span class="nav-number">1.4.</span> <span class="nav-text">线性表的链式存储结构–单链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结点的结构"><span class="nav-number">1.4.1.</span> <span class="nav-text">结点的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单链表的类C语言描述"><span class="nav-number">1.4.2.</span> <span class="nav-text">单链表的类C语言描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单链表插入、删除和定位运算的关键步骤"><span class="nav-number">1.4.3.</span> <span class="nav-text">单链表插入、删除和定位运算的关键步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环链表和双向循环链表"><span class="nav-number">1.5.</span> <span class="nav-text">循环链表和双向循环链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#循环链表的结点结构"><span class="nav-number">1.5.1.</span> <span class="nav-text">循环链表的结点结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双向循环链表的结点结构"><span class="nav-number">1.5.2.</span> <span class="nav-text">双向循环链表的结点结构</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">edazh</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
