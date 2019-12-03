@@ -27,7 +27,7 @@
         border: 1px solid #666;
         box-shadow: 0 0 4px #666;
         border-radius: 4px;
-        transition: all 0.3s linear;
+        transition: border-radius 0.3s linear;
       }
       .btn:hover {
         background-color: #444;
@@ -54,9 +54,18 @@
           transform: rotate(360deg);
         }
       }
+      #background {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+      }
     </style>
   </head>
   <body>
+    <canvas id="background"></canvas>
     <main>
       <h1 class="page-titlle">HOME of edazh</h1>
       <section>
@@ -69,6 +78,68 @@
           btn.innerText = "";
           btn.classList.add("active");
         });
+      });
+
+      var canvas = document.getElementById("background");
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+      var ctx = canvas.getContext("2d");
+      var animationHandle;
+
+      var getRandom = function(min, max) {
+        return ~~(Math.random() * (max - min)) + min + 1;
+      };
+
+      var Ball = function(x, y, radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+      };
+
+      Ball.prototype.draw = function(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fillStyle = "rgba(255,255,255,0.1)";
+        ctx.fill();
+      };
+
+      var ballList = [];
+      for (var i = 0; i < 20; i++) {
+        var radius = getRandom(10, 100);
+        ballList.push(
+          new Ball(
+            Math.random() * canvas.clientWidth + 1,
+            getRandom(0, canvas.clientHeight - radius),
+            radius
+          )
+        );
+      }
+
+      var draw = function() {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        ballList.forEach(function(v, i, arr) {
+          v.draw(ctx);
+          // 边界检测
+          var speed = 100 / v.radius;
+          v.y -= speed;
+          if (v.y <= -v.radius) {
+            var radius = getRandom(10, 100);
+            arr[i] = new Ball(
+              Math.random() * canvas.clientWidth + 1,
+              canvas.clientHeight + radius,
+              radius
+            );
+          }
+        });
+        animationHandle = window.requestAnimationFrame(draw);
+      };
+
+      window.addEventListener("load", function() {
+        animationHandle = window.requestAnimationFrame(draw);
+      });
+      window.addEventListener("unload", function() {
+        window.cancelAnimationFrame(animationHandle);
       });
     </script>
   </body>
